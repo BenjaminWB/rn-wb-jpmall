@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         marginTop: 50,
     },
     login: {
-        backgroundColor: mainColor,
+        backgroundColor: '#EF4A4710',
         // width: deviceWidth / 1.5,
         width: deviceWidth - 100,
         paddingLeft:8,
@@ -35,7 +35,9 @@ const styles = StyleSheet.create({
         marginTop: 25,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 5
+        borderRadius: 20,
+        borderColor:mainColor,
+        borderWidth:0.5
     },
     register: {
         backgroundColor: mainColor,
@@ -89,8 +91,8 @@ const styles = StyleSheet.create({
         height: 30,
     },
     loginText: {
-        color: 'white',
-        fontSize: 17
+        color: mainColor,
+        fontSize: 18
     },
     line: {
         backgroundColor: placeholderTextColor,

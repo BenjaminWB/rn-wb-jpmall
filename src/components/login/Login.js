@@ -25,7 +25,7 @@ import IphoneModel from "../../widgets/IphoneModel";
 import connect from "react-redux/es/connect/connect";
 import {style_edit_text} from "../../widgets/edittext/style_edit_text";
 import TintImage from "../../widgets/TintImage";
-import {mainColor, placeholderTextColor} from "../../constraint/Colors";
+import {mainColor, placeholderTextColor, titleTextColor} from "../../constraint/Colors";
 import {ic_login_account, ic_login_password} from "../../../resources/index";
 
 const {width} = Dimensions.get('window');
@@ -115,21 +115,22 @@ class Login extends Component {
     render() {
         return (
             <View style={styles.background}>
-                <TitleBar title={'登  录'}/>
+                <TitleBar title={'登录'} customBarTextStyle={{color:titleTextColor}} customBarStyle={{backgroundColor:'#fff'}}/>
+                <View style={{height:0.5,backgroundColor:placeholderTextColor,width:width}}/>
                 <View style={styles.container}>
                     <View style={[styles.loginBackground]}>
                             <View style={Styles.logoBackground}>
                             <Image source={login_logo} style={Styles.loginLogo}/>
                             </View>
                             <View style={styles.accountLayout}>
-                                <EditText customStyle={[style_edit_text.rectangle_border,{borderColor:mainColor,}]}
+                                <EditText customStyle={[style_edit_text._default]}
                                                 icon={ic_login_account}
                                                 isTintColor={true}
                                                 placeholder={'请输入您的账号'}
                                                 placeholderTextColor={placeholderTextColor}
                                                 maxLength={20}
                                                 onChangeText={(user_text) => this.setState({user_text})}/>
-                                <EditText customStyle={[style_edit_text.rectangle_border,{marginTop:20,borderColor:mainColor,}]}
+                                <EditText customStyle={[style_edit_text._default,{marginTop:20}]}
                                                 icon={ic_login_password}
                                                 isTintColor={true}
                                                 placeholder={'请输入您的密码'}
@@ -139,15 +140,15 @@ class Login extends Component {
                                                 secureTextEntry={true}/>
                                 <TouchableOpacity style={styles.login} activeOpacity={0.7}
                                                   onPress={() => this._login()}>
-                                    <Text style={styles.loginText}>登 录</Text>
+                                    <Text style={styles.loginText}>登录</Text>
                                 </TouchableOpacity>
                                 <View style={{flexDirection: 'row',paddingLeft:8,paddingRight:8,marginTop:5}}>
                                     <TouchableOpacity activeOpacity={0.7} onPress={this.goResetPassword}>
-                                        <Text style={styles.text}>忘记密码</Text>
+                                        <Text style={styles.text}>忘记密码？</Text>
                                     </TouchableOpacity>
                                     <View style={{flex:1}}/>
                                     <TouchableOpacity activeOpacity={0.7} onPress={this.goRegister}>
-                                        <Text style={[styles.text]}>立即注册</Text>
+                                        <Text style={[styles.text,{color:'#666666'}]}>立即注册</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>

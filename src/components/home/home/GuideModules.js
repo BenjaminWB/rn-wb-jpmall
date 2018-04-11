@@ -22,11 +22,11 @@ class GuideModules extends Component {
             //     uri: ic_join_businessman,
             // },
             {
-                name: '品牌馆',
+                name: '品牌',
                 uri: ic_brand_guan,
             },
             {
-                name: '乐购馆',
+                name: '新品',
                 uri: ic_legou_guan,
             },
             // {
@@ -34,7 +34,7 @@ class GuideModules extends Component {
             //     uri: ic_discount_guan,
             // },
             {
-                name: '名车馆',
+                name: '福利',
                 uri: ic_cars_order,
             },
             {
@@ -43,7 +43,7 @@ class GuideModules extends Component {
             },
         ];
         return (
-            <View style={{backgroundColor: '#ffffff', flexDirection: 'row'}}>
+            <View style={{backgroundColor: '#ffffff', flexDirection: 'row',paddingHorizontal:20}}>
                 {
                     data.map((item, i) => {
                         return <TouchableOpacity
@@ -75,9 +75,9 @@ class GuideModules extends Component {
                                     //     }
                                     //
                                     // }
-                                    if (item.name === '品牌馆') {
+                                    if (item.name === '品牌') {
                                         this.props.dispatch(goto('HomeStreet','APP_HOME_BRAND'));
-                                    } else if (item.name === '乐购馆') {
+                                    } else if (item.name === '新品') {
                                         this.props.dispatch(goto('HomeStreet','APP_HOME_LEGOU'));
                                     } else if (item.name === '活动') {
                                         // this.props.dispatch(goto('RichMoreBuy'));

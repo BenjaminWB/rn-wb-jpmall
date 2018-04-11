@@ -34,8 +34,9 @@ export const style_edit_text =StyleSheet.create({
         flexDirection: 'row',
         paddingHorizontal: 10,
         paddingVertical: 5,
-        borderRadius: 15,
-        borderWidth: 0,
+        // borderRadius: 15,
+        borderBottomWidth: 0.5,
+        borderBottomColor:placeholderTextColor,
         backgroundColor: 'rgba(255, 255, 255, 0.35)',
     },
     //下划线

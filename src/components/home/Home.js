@@ -96,7 +96,7 @@ class Home extends BasePage {
     render() {
         return (
             <View style={{flex: 1, backgroundColor: mainBackgroundColor}}>
-                {/*{this.getContentView()}*/}
+                {this.getContentView()}
                 <SearchBar opacity={this.state.opacity} msgCount={this.state.msgCount}/>
                 <RecommendDialog ref={'RecommendDialog'} referrer={this.state.referrer}
                                  onEnd={(text) => this._getReferrer(text)}
@@ -116,7 +116,7 @@ class Home extends BasePage {
             .then(([bannerData, moduleData,streetData,legouStreetData]) => {
                 if (isSuccess(bannerData) && isSuccess(moduleData) && isSuccess(streetData) && isSuccess(legouStreetData)) {
                     rows.push({"data": bannerData.result, 'modelId': ModuleStyle.BANNER});
-                    // rows.push({"data": '', 'modelId': ModuleStyle.GUIDE});
+                    rows.push({"data": '', 'modelId': ModuleStyle.GUIDE});
 
                     for (let item of streetData.result) {
                         rows.push({"data": item, 'modelId': item.style});

@@ -2,7 +2,7 @@
 // export const mainColor               = '#f85a68';
 // export const mainColor               = '#000000';
 // export const mainColor               = '#ff008f';
-export const mainColor               = '#ef4a47';
+export const mainColor               = '#EF4A47';
 //背景主色调
 export const mainBackgroundColor     = '#f1f1f1';
 //标题性文本颜色(较深)

@@ -6,18 +6,15 @@ import {
     TouchableOpacity,
     Text,
     NativeEventEmitter,
-    NativeModules, Dimensions, Image
+    NativeModules, Dimensions
 } from "react-native";
-import {ic_index_mask, ic_scan, whiteBackIco} from "../../../constraint/Image";
+import {ic_index_mask, ic_message, ic_message_new, ic_scan, ic_search, whiteBackIco} from "../../../constraint/Image";
 import {isIphoneX} from "react-native-iphone-x-helper";
 import {mainColor} from "../../../constraint/Colors";
 import {connect} from 'react-redux'
 import {goto, goBack} from "../../../reducers/RouterReducer";
 import {dealQRCode} from "../../../common/QRcodeUtil";
 import XImage from "../../../widgets/XImage";
-import EditText from "../../../widgets/edittext/EditText";
-import {style_edit_text} from "../../../widgets/edittext/style_edit_text";
-import {ic_message, ic_notification, ic_search} from "../../../../resources/index";
 
 /**
  * 搜索栏
@@ -69,22 +66,37 @@ class SearchBar extends Component {
                         backgroundColor: 'transparent',
                         flexDirection: 'row',
                         alignItems: 'center',
+                        paddingHorizontal: 5,
                         width: width,
                     }}>
                     {
+                        this.props.onlyTitle ?
                             <TouchableOpacity
                                 activeOpacity={0.7}
                                 onPress={() => this.props.dispatch(goBack())}>
-                                <XImage source={null} style={{width: 18, height: 18, margin: 10}}/>
+                                <XImage source={whiteBackIco} style={{width: 18, height: 18, margin: 10}}/>
+                            </TouchableOpacity> :
+                            <TouchableOpacity
+                                activeOpacity={0.7}
+                                onPress={() => NativeModules.InteractionModule.openScanQRCode()}>
+                                <XImage style={{width: 23, height: 23, margin: 10}} source={ic_scan}/>
                             </TouchableOpacity>
                     }
-                            <EditText
-                                customStyle={style_edit_text.rectangle_border}
-                                placeholder="请输入要搜索的商品名称"
-                                      icon={ic_search}
-                                      placeholderTextColor={'white'}
-                                      onClick={()=>this.props.dispatch(goto('SearchGoods'))} />
-
+                    {
+                        this.props.showTitle ? (
+                            <View style={{alignItems:'center',flex:1}}>
+                                <Text style={styles.title}>{this.props.title}</Text>
+                            </View>) : <TouchableOpacity
+                            style={styles.touchSearch}
+                            activeOpacity={0.7}//点击时的透明度
+                            onPress={() => this.props.dispatch(goto('SearchGoods'))}>
+                            <XImage style={{height: 20, width: 20}} source={ic_search}/>
+                            <Text numberOfLines={1}
+                                  style={{color: '#FFF', fontSize: 12.5, marginLeft: 5}}>请输入您需要搜索的商铺或商品名称</Text>
+                        </TouchableOpacity>
+                    }
+                    {
+                        this.props.onlyTitle ? <View style={{width: 32, height: 32, margin: 10}}/> :
                             <TouchableOpacity
                                 style={{width: 48, height: 48}}
                                 activeOpacity={0.7}
@@ -95,11 +107,13 @@ class SearchBar extends Component {
                                         this.props.dispatch(goto('Login'));
                                     }
                                 }}>
-                                <Image style={{width: 28, height: 28, margin: 10,}} source={ic_notification}/>
+                                <XImage style={{width: 28, height: 28, margin: 10,}} source={ic_message_new}/>
                                 <View style={[styles.countView, {display: this.props.msgCount > 0 ? 'flex' : 'none'}]}>
                                     <Text style={styles.count}>{this.props.msgCount}</Text>
                                 </View>
                             </TouchableOpacity>
+                    }
+
                 </View>
             </View>
         )

@@ -36,7 +36,7 @@ class SelectAddress extends Component {
                             resizeMode="contain"/>
                         <View style={{
                             flex: 1,
-                            backgroundColor:'red',
+                            // backgroundColor:'red',
                             flexDirection: 'column',
                             marginLeft: 10,
                             marginRight: 5,

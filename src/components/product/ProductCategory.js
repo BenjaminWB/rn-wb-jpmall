@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import {View, FlatList, StyleSheet, TouchableOpacity, Text, Dimensions, ScrollView} from 'react-native'
-import { mainBackgroundColor, mainColor, titleTextColor} from "../../constraint/Colors";
+import {mainBackgroundColor, mainColor, placeholderTextColor, titleTextColor} from "../../constraint/Colors";
 import {getRequestFailTip,  isSuccess, post} from "../../common/CommonRequest";
 import connect from "react-redux/es/connect/connect";
-import SearchView from "./search/SearchTitleBar";
 import LoadingView from "../../widgets/LoadingView";
 import RequestErrorView from "../../widgets/RequestErrorView";
 import {showToastShort} from "../../common/CommonToast";
@@ -11,6 +10,7 @@ import {goto} from "../../reducers/RouterReducer";
 import XImage from "../../widgets/XImage";
 import {getSmall, getThumb} from "../../common/PhotoUtil";
 import TitleBar from "../../widgets/TitleBar";
+import SearchView from "./module/SearchView";
 
 const {width, height} = Dimensions.get('window');
 
@@ -97,16 +97,15 @@ class ProductCategory extends Component {
                         renderItem={({item, index}) =>
                             <View style={{
                                 flexDirection: 'row',
-                                // backgroundColor: this.state.selectIndex === index ? mainColor : "#FFFFFF"
-                                backgroundColor: 'white'
+                                backgroundColor: this.state.selectIndex === index ? mainBackgroundColor : "#FFFFFF",
                             }}>
-                                <View style={{
-                                    backgroundColor: this.state.selectIndex === index ? mainColor : "#FFFFFF",
-                                    minHeight: 30,
-                                    width: 1,
-                                    borderLeftColor: this.state.selectIndex === index ? mainColor : '#00000000',
-                                    borderLeftWidth: this.state.selectIndex === index ? 3 : 0
-                                }}/>
+                                {/*<View style={{*/}
+                                    {/*backgroundColor: this.state.selectIndex === index ? mainColor : "#FFFFFF",*/}
+                                    {/*minHeight: 30,*/}
+                                    {/*width: 1,*/}
+                                    {/*borderLeftColor: this.state.selectIndex === index ? mainColor : '#00000000',*/}
+                                    {/*borderLeftWidth: this.state.selectIndex === index ? 3 : 0*/}
+                                {/*}}/>*/}
                                 <TouchableOpacity
                                     style={styles.leftTouch}
                                     onPress={() => {
@@ -117,47 +116,48 @@ class ProductCategory extends Component {
                                     }}
                                     activeOpacity={1}>
                                     <Text style={{
-                                        color: (this.state.selectIndex === index ? mainColor : 'black'),
-                                        marginLeft: this.state.selectIndex === index ? -3 : 0
+                                        color: (this.state.selectIndex === index ? mainColor : '#333333'),
+                                        fontSize:14
                                     }}>{item.name}</Text>
                                 </TouchableOpacity>
                             </View>
                         }
                     />
                 </View>
-                <ScrollView style={{flex: 1}}>
-                    <XImage uri={imgUrl} style={{height: (width - 92) / 3}}/>
+                <ScrollView style={{flex: 1,marginLeft:10}}>
+                    <XImage uri={imgUrl} style={{height: (width - 92) / 3,marginVertical:10}}/>
                     <View style={styles.rightView}>
-                    <FlatList
-                        showsVerticalScrollIndicator={false}
-                        data={this.state.productListData}
-                        keyExtractor={(item, index) => index}
-                        numColumns={3}
-                        renderItem={({item, index}) =>
-                            <TouchableOpacity
-                                key={index}
-                                style={{
-                                    width: (width - 170) / 3,
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    margin: 10
-                                }}
-                                activeOpacity={1}//点击时的透明度
-                                onPress={
-                                    () => this.props.dispatch(goto('ProductList', {id: {categoryId:item.id}}))}
-                            >
-                                <XImage uri={getSmall(item.imgUrl)}
-                                        style={{width: (width - 180) / 3, height: (width - 180) / 3}}/>
-                                <Text style={{fontSize:12,marginTop: 5,color:titleTextColor}} numberOfLines={1}>{item.name}</Text>
-                            </TouchableOpacity>
-                        }
-                    />
+                        <FlatList
+                            showsVerticalScrollIndicator={false}
+                            data={this.state.productListData}
+                            keyExtractor={(item, index) => index}
+                            numColumns={3}
+                            renderItem={({item, index}) =>
+                                <TouchableOpacity
+                                    key={index}
+                                    style={{
+                                        width: (width - 170) / 3,
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        margin: 10
+                                    }}
+                                    activeOpacity={1}//点击时的透明度
+                                    onPress={
+                                        () => this.props.dispatch(goto('ProductList', {id: {categoryId:item.id}}))}
+                                >
+                                    <XImage uri={getSmall(item.imgUrl)}
+                                            style={{width: (width - 180) / 3, height: (width - 180) / 3}}/>
+                                    <Text style={{fontSize:12,marginTop: 5,color:titleTextColor}} numberOfLines={1}>{item.name}</Text>
+                                </TouchableOpacity>
+                            }
+                        />
                     </View>
                 </ScrollView>
             </View>);
         return (
             <View style={styles.container}>
-                <TitleBar onlyTitle={true} title={'商品'}/>
+                <SearchView noShowRightImage={true}/>
+                <View style={{height:0.5,backgroundColor:placeholderTextColor,width:width}}/>
                 {this.state.isLoading ? <LoadingView/> : showView}
             </View>
         );
