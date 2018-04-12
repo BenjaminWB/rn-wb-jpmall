@@ -12,6 +12,7 @@ import {post, getRequestFailTip,isSuccess} from '../../../../common/CommonReques
 
 import {connect} from 'react-redux';
 import {
+    ic_me_bg,
     ic_personal_background,
 } from "../../../../constraint/Image";
 import {mainBackgroundColor, mainColor} from "../../../../constraint/Colors";
@@ -136,7 +137,7 @@ class Integral extends BaseComponent {
         return (
             <View style={styles.container}>
                 <View style={{height:isIphoneX()?screenW*0.5+25:screenW*0.5}}>
-                    <XImage source={ic_personal_background}
+                    <XImage source={ic_me_bg}
                             style={styles.backgroundImageStyle}/>
                     {this._renderTitleBar(asset)}
                     <TotalNumber total={asset.total} totalTip={`${this.assetName}总额`}/>

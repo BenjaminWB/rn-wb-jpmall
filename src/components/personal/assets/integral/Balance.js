@@ -16,7 +16,7 @@ import {titleTextColor, mainBackgroundColor} from "../../../../constraint/Colors
 import {goto} from "../../../../reducers/RouterReducer";
 import {connect} from 'react-redux';
 import {
-    ic_balance_of_payments, ic_bank_card,
+    ic_balance_of_payments, ic_bank_card, ic_me_bg,
     ic_payment_of_payment, ic_personal_background, ic_recharge, ic_right_arrows, ic_roll_out, ic_transfer, ic_webbank,
     ic_withdrawals
 } from "../../../../constraint/Image";
@@ -179,7 +179,7 @@ class Balance extends BaseComponent {
             <View style={styles.container}>
 
                     <View style={{height:isIphoneX()?screenW*0.5+25:screenW*0.5}}>
-                        <XImage source={ic_personal_background}
+                        <XImage source={ic_me_bg}
                                style={styles.backgroundImageStyle}/>
                         <TitleBar
                                   title={getAssetTypeName(this.assetType)}

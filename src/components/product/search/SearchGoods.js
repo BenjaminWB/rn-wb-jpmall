@@ -30,10 +30,10 @@ class SearchGoods extends Component {
     }
 
     _getHotWordView(){
-       let hotWord = ['飞科','iPhoneX','耐克','阿迪达斯','MAC','钻石皇朝','苏尚儿']
+       let hotWord = ['iPhoneX','苏尚儿','耐克','阿迪达斯','MAC','飞科']
        return  <View style={{paddingBottom:10,backgroundColor:'white'}}>
-            <Text style={styles.historyText}>热门搜索</Text>
-            <XImage style={{width:SCREEN_WIDTH,height:SCREEN_WIDTH * 0.25}} uri={'http://p0xk4au0z.bkt.clouddn.com/1520591518377.jpg'}/>
+            <Text style={styles.historyText}>热索</Text>
+            {/*<XImage style={{width:SCREEN_WIDTH,height:SCREEN_WIDTH * 0.25}} uri={'http://p0xk4au0z.bkt.clouddn.com/1520591518377.jpg'}/>*/}
             <View style={{marginTop:10,marginHorizontal:10,flexDirection: 'row', flexWrap: 'wrap'}}>
                 {hotWord.map((item, index) => {
                     return (

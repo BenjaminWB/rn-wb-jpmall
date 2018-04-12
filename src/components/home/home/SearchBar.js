@@ -74,7 +74,7 @@ class SearchBar extends Component {
                             <TouchableOpacity
                                 activeOpacity={0.7}
                                 onPress={() => this.props.dispatch(goBack())}>
-                                <XImage source={whiteBackIco} style={{width: 18, height: 18, margin: 10}}/>
+                                <View  style={{width: 18, height: 18, margin: 10}}/>
                             </TouchableOpacity> :
                             <TouchableOpacity
                                 activeOpacity={0.7}

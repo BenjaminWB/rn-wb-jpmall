@@ -125,7 +125,7 @@ class ProductCategory extends Component {
                     />
                 </View>
                 <ScrollView style={{flex: 1,marginLeft:10}}>
-                    <XImage uri={imgUrl} style={{height: (width - 92) / 3,marginVertical:10}}/>
+                    {/*<XImage uri={imgUrl} style={{height: (width - 92) / 3,marginVertical:10}}/>*/}
                     <View style={styles.rightView}>
                         <FlatList
                             showsVerticalScrollIndicator={false}
@@ -183,6 +183,7 @@ const styles = StyleSheet.create({
     rightView: {
         // margin: 10,
         backgroundColor: '#fff',
+        marginTop:10
         // shadowColor: 'gray',
         // shadowOffset: {height: 2, width: 2},
         // shadowRadius: 2,

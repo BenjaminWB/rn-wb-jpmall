@@ -46,7 +46,7 @@ class OrderComponent extends Component {
                     {this.orderItem("待发货", ic_order_wait_delivery, userInfo.orderApproved)}
                     {this.orderItem("配送中", ic_order_wait_received, userInfo.orderSent)}
                     {this.orderItem("待评价", ic_order_wait_comment, userInfo.orderAppraise)}
-                    {this.orderItem("退款/售后", ic_order_customer_service, 0)}
+                    {/*{this.orderItem("退款/售后", ic_order_customer_service, 0)}*/}
                 </View>
             </View>
 

@@ -102,7 +102,7 @@ class Home extends BasePage {
         return (
             <View style={{flex: 1, backgroundColor: mainBackgroundColor}}>
                 {this.getContentView()}
-                <SearchBar opacity={this.state.opacity} msgCount={this.state.msgCount}/>
+                <SearchBar opacity={this.state.opacity} msgCount={this.state.msgCount} onlyTitle={true}/>
                 <RecommendDialog ref={'RecommendDialog'} referrer={this.state.referrer}
                                  onEnd={(text) => this._getReferrer(text)}
                                  confirm={() => this._bindRecommend()}/>

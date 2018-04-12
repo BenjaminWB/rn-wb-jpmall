@@ -88,13 +88,13 @@ class SearchTitleBar extends Component {
                 this.props.dispatch(goto('SearchGoods'))
             }}>
             <View style={{
-                height:35,
+                height:30,
                 flexDirection: 'row',
                 alignItems: 'center',
                 borderBottomWidth: 0.5,
                 paddingBottom: 5,
                 paddingRight: 10,
-                borderBottomColor: '#FFF'
+                borderBottomColor: '#FFF',
             }}>
                 <Image
                     source={ic_search}

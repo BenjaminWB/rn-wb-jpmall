@@ -184,7 +184,7 @@ class ProductList extends Component {
                         justifyContent: 'center'
                     }} onPress={()=>{this.sortByComprehensive()}}>
                         <Text
-                            style={[styles.comprehensiveTankingStyle, {color: this.state.isSortByComprehensive ? mainColor : contentTextColor}]}>{'综合排序'}</Text>
+                            style={[styles.comprehensiveTankingStyle, {color: this.state.isSortByComprehensive ? mainColor : contentTextColor}]}>{'综合'}</Text>
                     </TouchableOpacity>
                     <View style={styles.line}/>
                     <TouchableOpacity activeOpacity={0.7} style={styles.salesVolumeStyle}

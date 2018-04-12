@@ -81,9 +81,10 @@ class GuideModules extends Component {
                                         this.props.dispatch(goto('HomeStreet','APP_HOME_LEGOU'));
                                     } else if (item.name === '活动') {
                                         // this.props.dispatch(goto('RichMoreBuy'));
-                                        showToastShort('敬请期待');
+                                        showToastShort('活动筹备中，暂未开放');
                                     } else {
-                                        this.props.dispatch(goto('BuyCarIndex'));
+                                        showToastShort('敬请期待');
+                                        // this.props.dispatch(goto('BuyCarIndex'));
                                     }
                                 }}>
                                 <XImage uri={item.uri} style={{width:45, height: 45}}/>
