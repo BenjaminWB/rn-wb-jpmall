@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Dimensions, TouchableOpacity, ImageBackground} from "react-native";
+import {View, Dimensions, TouchableOpacity, ImageBackground, Text} from "react-native";
 import Swiper from 'react-native-swiper';
 import {connect} from "react-redux";
 import {commonAction} from "../../../common/CommonAction";
@@ -39,9 +39,10 @@ class CarouselHome extends Component {
                     style={{height: isHeight ? deviceWidth * 0.8 : deviceWidth * 0.6}}
                     loop={true}
                     autoplay={true}
-                    paginationStyle={{bottom: 10}}
-                    dot={dot}
-                    activeDot={activeDot}>
+                    // paginationStyle={{bottom: 10}}
+                    // dot={dot}
+                    // activeDot={activeDot}
+                    renderPagination={renderPagination}>
                     {
                         this.props.data.map((item, i) => {
                                 return (
@@ -80,7 +81,26 @@ class CarouselHome extends Component {
         )
     }
 }
-
+const renderPagination = (index, total, context) => {
+    return (
+        <View style={styles.paginationStyle}>
+            <Text style={{ color: mainColor}}>
+                <Text style={styles.paginationText}>{index + 1}</Text>/{total}
+            </Text>
+        </View>
+    )
+}
+const styles = {
+    paginationStyle: {
+        position: 'absolute',
+        bottom: 10,
+        right: 10
+    },
+    paginationText: {
+        color: mainColor,
+        fontSize: 20
+    }
+}
 selector = (state) => {
     return {
         token: state.loginStore.token,

@@ -34,6 +34,7 @@ export const {
     ic_personal_module_address,
     ic_personal_module_collect,
     ic_personal_module_group,
+    ic_me_id,
     ic_personal_module_history,
     ic_personal_module_open,
     ic_personal_module_recharge,

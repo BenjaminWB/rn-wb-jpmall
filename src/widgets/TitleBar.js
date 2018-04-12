@@ -12,7 +12,7 @@ import {
 
 import {
     whiteBackIco,
-    shareIco
+    shareIco, ic_left_arrows
 } from '../constraint/Image';
 import {connect} from 'react-redux';
 import {mainColor} from '../constraint/Colors';
@@ -43,7 +43,7 @@ class TitleBar extends Component {
     };
 
     render() {
-        const {customLeftView,dispatch, onBackViewClick, onRightViewClick} = this.props;
+        const {customLeftView,dispatch, onBackViewClick, onRightViewClick,isBlackArrow} = this.props;
         let leftView = (this.props.hideLeft || this.props.onlyTitle) ? null : (
 
             <View style={styles.leftViewLayout}>
@@ -58,7 +58,7 @@ class TitleBar extends Component {
                             dispatch(goBack());
                         }
                     }}>
-                    <Image source={ic_arrow_left} style={styles.backIco}/>
+                    <Image source={isBlackArrow?ic_left_arrows:ic_arrow_left} style={styles.backIco}/>
                 </TouchableOpacity>}
             </View>
         );

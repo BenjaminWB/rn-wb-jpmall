@@ -73,14 +73,12 @@ class PersonalIndex extends BaseComponent {
     render() {
         let showView = (
             <ScrollView style={styles.contentContainer}>
-                {this._titleView()}
-                <HeadView userInfo={this.props.userInfo}/>
-
-
+                {/*{this._titleView()}*/}
+                <HeadView userInfo={this.props.userInfo} />
+                <MyAssetView userInfo={this.props.userInfo}/>
                 <OrderView userInfo={this.props.userInfo}/>
-                {/*<MyAssetView userInfo={this.props.userInfo}/>*/}
                 <ModuleView/>
-                <ServiceMessageView/>
+                {/*<ServiceMessageView/>*/}
             </ScrollView>
         );
         return (

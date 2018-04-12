@@ -115,7 +115,11 @@ class Login extends Component {
     render() {
         return (
             <View style={styles.background}>
-                <TitleBar title={'登录'} customBarTextStyle={{color:titleTextColor}} customBarStyle={{backgroundColor:'#fff'}}/>
+                <TitleBar
+                    title={'登录'}
+                    isBlackArrow={true}
+                    customBarTextStyle={{color:titleTextColor}}
+                    customBarStyle={{backgroundColor:'#fff'}}/>
                 <View style={{height:0.5,backgroundColor:placeholderTextColor,width:width}}/>
                 <View style={styles.container}>
                     <View style={[styles.loginBackground]}>

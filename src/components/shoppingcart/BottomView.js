@@ -12,6 +12,8 @@ import {
 import {connect} from 'react-redux';
 import {formatMoney} from "../../common/StringUtil";
 import TipDialog from "../../widgets/dialog/TipDialog";
+import CheckBox from "../../widgets/checkbox/CheckBox";
+import {allSelectMerchantProduct} from "../../reducers/ShoppingCartReducer";
 
 
 class BottomView extends Component {
@@ -19,6 +21,7 @@ class BottomView extends Component {
         super(props);
         this.state = {
             isDeleteMode:false,
+            allCheck:false
         }
     }
 
@@ -38,13 +41,29 @@ class BottomView extends Component {
                 }
             });
         let backgroundColor = (checkCount === 0) ? 'gray' : mainColor;
+        let allCheck=true;
+        this.props.merchantData.map((item) => {
+            if (!item.merchant.allCheck)allCheck=false;
+        });
         return (
             <View style={styles.container}>
-                <View style={{justifyContent: 'center', backgroundColor: 'white', flex: 1, paddingLeft: 10}}>
-                    <Text style={{color: titleTextColor, fontSize: 17}}>合计:
-                        <Text style={{color: priceColor, fontSize: 17}}>{formatMoney(totalPrice)}</Text>
+                <View style={{alignItems: 'center', backgroundColor: 'white', flex: 1, paddingLeft: 10,flexDirection:'row'}}>
+                    <TouchableOpacity
+                        activeOpacity={0.7}
+                        style={styles.storeLayout}
+                        onPress={() => {
+                            this.props.merchantData.map((item) => {
+                                this.props.dispatch(allSelectMerchantProduct(item.merchant.merchantId,!item.merchant.allCheck));
+                            });
+                        }}>
+                        <CheckBox isCheck={allCheck}/>
+
+                    </TouchableOpacity>
+                    <View style={{flex:1}}/>
+                    <Text style={{color: titleTextColor, fontSize: 17,marginRight:20}}>总计:
+                        <Text style={{color: priceColor}}>{formatMoney(totalPrice)}</Text>
                     </Text>
-                    <Text style={{color: content2TextColor, fontSize: 14, marginTop: 2}}>共{totalCount}个商品</Text>
+                    {/*<Text style={{color: content2TextColor, fontSize: 14, marginTop: 2}}>共{totalCount}个商品</Text>*/}
                 </View>
                 <TouchableOpacity style={[styles.settlement, {backgroundColor: backgroundColor}]}
                                   activeOpacity={0.7}//点击时的透明度
@@ -59,7 +78,9 @@ class BottomView extends Component {
                                       }
 
                                   }} disabled={(checkCount === 0)}>
-                    <Text style={{color: 'white', fontSize: 18}}>{this.state.isDeleteMode?'确定删除':'立即结算'}</Text>
+                    <Text style={{color: 'white', fontSize: 18}}>{this.state.isDeleteMode?'确定删除':'立即结算'}
+                        {this.state.isDeleteMode?'':<Text style={{fontSize: 12}}>({totalCount})</Text>}
+                    </Text>
                 </TouchableOpacity>
                 <View>
                     <TipDialog ref={'TipDialog'}
@@ -90,6 +111,12 @@ const styles = StyleSheet.create({
         // paddingLeft: 15,
         borderTopWidth: 0.5,
         borderTopColor: placeholderTextColor,
+    },
+    storeLayout:{
+        padding:9,
+        flexDirection:'row',
+        backgroundColor:'#ffffff',
+        alignItems:'center',
     },
     settlement: {
         alignItems: 'center',

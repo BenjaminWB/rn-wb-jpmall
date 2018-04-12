@@ -6,14 +6,15 @@ import {
     StyleSheet, TouchableOpacity,
 } from 'react-native';
 import {
-    mainBackgroundColor,
+    mainBackgroundColor, placeholderTextColor,
     titleTextColor,
 } from '../../constraint/Colors';
-import {ic_un_selected, ic_selected, ic_delete} from '../../constraint/Image'
+import {ic_un_selected, ic_selected, ic_delete, ic_store} from '../../constraint/Image'
 import {connect} from "react-redux";
 import {allSelectMerchantProduct} from "../../reducers/ShoppingCartReducer";
 import CheckBox from "../../widgets/checkbox/CheckBox";
 import {APP_NAME} from "../../constraint/Strings";
+import XImage from "../../widgets/XImage";
 
 class ShoppingCartMerchantHeader extends Component {
 
@@ -24,16 +25,14 @@ class ShoppingCartMerchantHeader extends Component {
         let {allCheck,merchantName} = this.props.data;
         return (
             <TouchableOpacity
-                activeOpacity={0.7}
+                activeOpacity={1}
+                style={styles.storeLayout}
                 onPress={() => {
                     this.props.dispatch(allSelectMerchantProduct(this.props.data.merchantId,!allCheck));
                 }}>
-                <View style={styles.container}>
-                    <View style={styles.storeLayout}>
-                        <CheckBox isCheck={allCheck}/>
-                        <Text style={styles.storeName}>{merchantName}</Text>
-                    </View>
-                </View>
+                <CheckBox isCheck={allCheck}/>
+                <XImage source={ic_store} style={{height:18,width:18,marginHorizontal:5}}/>
+                <Text style={styles.storeName}>{merchantName}</Text>
             </TouchableOpacity>
         )
     }
@@ -41,15 +40,17 @@ class ShoppingCartMerchantHeader extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: mainBackgroundColor,
+        backgroundColor: '#ffffff',
         flex: 1,
     },
 
     storeLayout:{
         padding:9,
         flexDirection:'row',
-        backgroundColor:'#F9F9F9',
+        backgroundColor:'#ffffff',
         alignItems:'center',
+        borderBottomColor:placeholderTextColor,
+        borderBottomWidth:0.5
     },
     storeName: {
         color: titleTextColor,
@@ -77,5 +78,5 @@ selector = (state) => {
     return {
         token: state.loginStore.token,
     }
-}
+};
 export default connect(selector)(ShoppingCartMerchantHeader);

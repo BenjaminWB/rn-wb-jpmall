@@ -29,7 +29,7 @@ import {getRequestFailTip, isSuccess, post} from "../../../../../common/CommonRe
 import TintImage from "../../../../../widgets/TintImage";
 import {CommonStyles} from "../../../../../styles/CommonStyles";
 import {
-    ic_arrow_right,
+    ic_arrow_right, ic_me_id,
     ic_personal_module_address, ic_personal_module_collect,
     ic_personal_module_group, ic_personal_module_history, ic_personal_module_open, ic_personal_module_recharge,
     ic_personal_module_redpacket, ic_personal_module_service_phone,
@@ -46,13 +46,20 @@ class ModuleView extends Component {
     getModulesList(){
         let {dispatch,userInfo} = this.props;
         return [
-            {img: ic_personal_module_group, name: '我的推荐',func:()=>{dispatch(goto('MyRecommendation'))}},
-            {img: ic_personal_module_redpacket, name: '红包',func:()=>{dispatch(goto('MyRedPacket'))}},
+            {img: ic_me_id, name: '我的信息认证',func:()=>{
+                if (isTrue(this.props.isRealNameAuth)) {
+                    dispatch(goto('RealAuthInfo'));
+                } else {
+                    dispatch(goto('Certification'));
+                }
+            }},
+            // {img: ic_personal_module_group, name: '我的推荐',func:()=>{dispatch(goto('MyRecommendation'))}},
+            {img: ic_personal_module_redpacket, name: '我的红包',func:()=>{dispatch(goto('MyRedPacket'))}},
             // {img: ic_personal_module_history, name: '历史订单',func:()=>{this._gotoHistoryOrderList()}},
-            {img: ic_personal_module_address, name: '收货地址',func:()=>{dispatch(goto('AddressList',{isSelectAddress:false}))}},
+            {img: ic_personal_module_address, name: '我的收货地址',func:()=>{dispatch(goto('AddressList',{isSelectAddress:false}))}},
             // {img: ic_personal_module_recharge, name: '充值中心',func:()=>{dispatch(goto('RechargeCenter'))}},
             {img: ic_personal_module_collect, name: '我的收藏',func:()=>{dispatch(goto('CollectList'))}},
-            // {img: ic_personal_module_service_phone, name: '联系客服',func:()=>{this.refs.CallDialog.showDialog()}},
+            {img: ic_personal_module_service_phone, name: '客服与帮助',func:()=>{this.refs.CallDialog.showDialog()}},
         ]
     }
 
@@ -154,8 +161,8 @@ const styles = StyleSheet.create({
         // justifyContent: 'center',
     },
     moduleImg: {
-        width: 30,
-        height: 30,
+        width: 25,
+        height: 25,
         resizeMode: 'contain'
     },
     moduleName: {

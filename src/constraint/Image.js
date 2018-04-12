@@ -17,6 +17,8 @@ export const ic_circle_logo = require('../../resources/ic_circle_logo.png');
 
 //个人中心所需
 export const ic_delivered = require('../../resources/ic_delivered.png');
+export const ic_me_bg = require('../../resources/personal/ic_me_bg.png');
+export const ic_me_vip = require('../../resources/personal/ic_me_vip.png');
 export const ic_evaluated = require('../../resources/ic_evaluated.png');
 export const ic_custom = 'http://bonn.qiniudn.com/images/Company/20171221/20171221162637879.png';
 export const ic_waiting = require('../../resources/ic_waiting.png');
@@ -69,7 +71,8 @@ export const ic_scan = require('../../resources/ic_scan.png');
 export const ic_search = require('../../resources/ic_search.png');
 export const ic_recent_news = 'http://p0xkrqo35.bkt.clouddn.com/1515660001891.png';
 export const ic_right_arrows = require('../../resources/ic_right_arrows.png');
-export const ic_recommend = 'http://bonn.qiniudn.com/images/Company/20171209/20171209102944946.png';
+export const ic_left_arrows = require('../../resources/ic_left_arrows.png');
+export const ic_recommend = 'http://p0xkrqo35.bkt.clouddn.com/1523498172343.png';
 export const ic_msg_identity = 'http://p0xkrqo35.bkt.clouddn.com/1517909865728.png';
 export const ic_join_businessman = 'http://p0xkrqo35.bkt.clouddn.com/1515575631754.png';
 export const ic_cars_order = 'http://p0xkrqo35.bkt.clouddn.com/1523441451134.png';
@@ -138,6 +141,7 @@ export const ic_buyCar_transfer = require('../../resources/ic_buyCar_transfer.pn
 
 //购物车
 export const ic_empty_car = require('../../resources/ic_empty_car.png');
+export const ic_store = require('../../resources/ic_store.png');
 //商品详情
 export const product_full_star = require('../../resources/product_full_star.png');
 export const product_empty_star = require('../../resources/product_empty_star.png');

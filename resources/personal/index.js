@@ -7,4 +7,5 @@ export const PersonalIcon = {
     ic_personal_module_recharge:require('./ic_personal_module_recharge.png'),
     ic_personal_module_redpacket:require('./ic_personal_module_redpacket.png'),
     ic_personal_module_service_phone:require('./ic_personal_module_service_phone.png'),
+    ic_me_id:require('./ic_me_id.png'),
 };

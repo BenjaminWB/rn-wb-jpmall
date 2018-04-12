@@ -36,10 +36,10 @@ class MyAssetView extends Component {
     }
 
     render() {
-        return (<View>
-                <View style={{marginTop: 10, backgroundColor: "white",}}>
+        return (<View style={{flexDirection:'row',backgroundColor:'#ffffff',marginBottom:10}}>
+                {/*<View style={{backgroundColor: "white",}}>
                     <View style={styles.allAsset}>
-                        {/*<Image source={ic_myAsset} style={{width: 30, height: 30, marginLeft: 10,}}/>*/}
+                        <Image source={ic_myAsset} style={{width: 30, height: 30, marginLeft: 10,}}/>
                         <Text style={styles.allAssetLeft}>我的资产</Text>
                         <TouchableOpacity activeOpacity={0.7} style={{height:30,alignItems:'center',justifyContent:'center'}} onPress={() => this.props.dispatch(goto('MyAsset'))}>
                             <Text style={styles.moreAssetRight}>更多资产</Text>
@@ -51,7 +51,7 @@ class MyAssetView extends Component {
                         <View style={styles.itemLine}/>
                         {this.assetItem(this.props.userInfo.accountBalance, "消费余额")}
                     </View>
-                </View>
+                </View>*/}
 
                 {/*{*/}
                     {/*!this.props.userInfo.isCompanyMember?null:<View style={{marginTop: 10, backgroundColor: "white",}}>*/}
@@ -69,14 +69,37 @@ class MyAssetView extends Component {
                         {/*</View>*/}
                     {/*</View>*/}
                 {/*}*/}
+                {/*<View style={{flex:1,justifyContent:'center'}}>
+                    <Text style={{fontSize:17,color:mainColor}}>我的资产</Text>
+                    <Text style={{fontSize:12,color:titleTextColor}}>我的资产</Text>
+                </View>
+                <View style={{flex:1,justifyContent:'center'}}>
+                    <Text style={{fontSize:17,color:mainColor}}>我的资产</Text>
+                    <Text style={{fontSize:12,color:titleTextColor}}>我的资产</Text>
+                </View>
+                <View style={{flex:1,justifyContent:'center'}}>
+                    <Text style={{fontSize:17,color:mainColor}}>我的资产</Text>
+                    <Text style={{fontSize:12,color:titleTextColor}}>我的资产</Text>
+                </View>*/}
+                <View style={styles.scoreLayout}>
+                    {this.assetItem(this.props.userInfo.accountBalance, "我的资产")}
+                    <View style={styles.itemLine}/>
+                    {this.assetItem(this.props.userInfo.accountConsumerCoupon, "消费券")}
+                    <View style={styles.itemLine}/>
+                    {this.assetItem(this.props.userInfo.accountBalance, "余额")}
+                </View>
+
             </View>
         )
     }
 
     assetItem(score, scoreName,isShow = true) {
         return !isShow?<View style={{flex:1}}/>: <TouchableOpacity activeOpacity={0.7} style={styles.scoreLayoutItem}
-                                 onPress={() => this.goto(scoreName)}>
-            <Text style={styles.scoreValue}>{formatMoney(!isNaN(score) ? score : score, false)}</Text>
+                                 onPress={() => {
+                                     if (scoreName === '我的资产') this.props.dispatch(goto('MyAsset'));
+                                     else this.goto(scoreName)
+                                 }}>
+            <Text style={[styles.scoreValue,{color:scoreName === '我的资产'?mainColor:titleTextColor}]}>{formatMoney(!isNaN(score) ? score : score, false)}</Text>
             <Text style={styles.scoreText}>{scoreName}</Text>
         </TouchableOpacity>;
     }
@@ -117,8 +140,8 @@ const styles = StyleSheet.create({
         color: mainColor
     },
     scoreText: {
-        fontSize: 13,
-        color: contentTextColor,
+        fontSize: 12,
+        color: '#222222',
         marginTop: 5,
     },
     line: {

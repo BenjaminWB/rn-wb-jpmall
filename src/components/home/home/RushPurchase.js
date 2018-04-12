@@ -13,7 +13,7 @@ class RushPurchase extends Component{
     render(){
         let data=this.props.data;
         return(
-            <View>
+            <View style={{backgroundColor:'#fff'}}>
                 {/*{*/}
                     {/*data.imgs.length===0?null:*/}
                     {/*<Swiper*/}
@@ -37,27 +37,34 @@ class RushPurchase extends Component{
                         {/*}*/}
                     {/*</Swiper>*/}
                 {/*}*/}
-                <View style={{height: 0.5,backgroundColor:placeholderTextColor,width:width}}/>
-                <View style={{backgroundColor:'#fff',flexDirection:'row',marginBottom:5}}>
+                <XImage uri={'http://p0xkrqo35.bkt.clouddn.com/1523447895652.png'} style={{width: width, height: width * 0.12}}/>
+                {/*<View style={{height: 0.5,backgroundColor:placeholderTextColor,width:width}}/>*/}
+                <View style={{flexDirection:'row', paddingVertical:10}}>
                     <TouchableOpacity
                         disabled={!data.contents[0]}
-                        style={{height: width * 0.4 *1.33,width: width * 0.4}}
+                        style={{height: width * 0.4 *1.33,width: width * 0.4,marginHorizontal:10}}
                         activeOpacity={0.7}
                         onPress={() => commonAction(this.props.dispatch,{item:data.contents[0],token:this.props.token})}>
-                        <XImage uri={data.contents[0]?data.contents[0].imgUrl:''} style={{flex:1}}/>
+                        <XImage uri={'http://p0xkrqo35.bkt.clouddn.com/1523448368348.png'} style={{flex:1,resizeMode: 'stretch'}}/>
                     </TouchableOpacity>
-                    <View style={{height: width * 0.4 *1.33,backgroundColor:placeholderTextColor,width:0.5}}/>
+                    {/*<View style={{height: width * 0.4 *1.33,backgroundColor:placeholderTextColor,width:0.5}}/>*/}
 
-                    <View style={{flex:1,height: width * 0.4 *1.33}}>
+                    <View style={{flex:1,height: width * 0.4 *1.33,marginRight:10}}>
                         <TouchableOpacity
                             disabled={!data.contents[1]}
-                            style={{flex:1,flexDirection:'row'}}
+                            style={{flex:1,marginBottom:10}}
                             activeOpacity={0.7}
                             onPress={() => commonAction(this.props.dispatch,{item:data.contents[1],token:this.props.token})}>
-                            <XImage uri={data.contents[1]?data.contents[1].imgUrl:''} style={{flex:1}}/>
+                            <XImage uri={'http://p0xkrqo35.bkt.clouddn.com/1523448701195.png'} style={{flex:1,resizeMode: 'stretch'}}/>
                         </TouchableOpacity>
-                        <View style={{height:0.5,backgroundColor:placeholderTextColor,width:width * 0.6}}/>
-
+                        <TouchableOpacity
+                            disabled={!data.contents[2]}
+                            style={{flex:1}}
+                            activeOpacity={0.7}
+                            onPress={() => commonAction(this.props.dispatch,{item:data.contents[2],token:this.props.token})}>
+                            <XImage uri={'http://p0xkrqo35.bkt.clouddn.com/1523448724074.png'} style={{flex:1,resizeMode: 'stretch'}}/>
+                        </TouchableOpacity>
+                        {/*<View style={{height:0.5,backgroundColor:placeholderTextColor,width:width * 0.6}}/>
                         <View style={{flexDirection:'row',height:width * 0.6*0.5}}>
                             <TouchableOpacity
                                 disabled={!data.contents[2]}
@@ -75,7 +82,7 @@ class RushPurchase extends Component{
                                 onPress={() => commonAction(this.props.dispatch,{item:data.contents[3],token:this.props.token})}>
                                 <XImage uri={data.contents[3]?data.contents[3].imgUrl:''} style={{flex: 1}}/>
                             </TouchableOpacity>
-                        </View>
+                        </View>*/}
                     </View>
                 </View>
             </View>

@@ -18,6 +18,7 @@ import TintImage from "../../../../../widgets/TintImage";
 import {CommonStyles} from "../../../../../styles/CommonStyles";
 import {OrderIcon} from "../../../../../../resources/order/style2/index";
 import {
+    ic_arrow_right,
     ic_order_customer_service,
     ic_order_wait_comment, ic_order_wait_delivery, ic_order_wait_pay,
     ic_order_wait_received
@@ -30,9 +31,13 @@ class OrderComponent extends Component {
         return (
             <View style={{backgroundColor:'white'}}>
                 <View style={styles.allAsset}>
-                    <Text style={styles.allAssetLeft}>我的订单</Text>
-                    <TouchableOpacity activeOpacity={0.7} style={{height:30,alignItems:'center',justifyContent:'center'}} onPress={() => this.props.dispatch(goto('MyOrder'))}>
-                        <Text style={styles.moreAssetRight}>全部订单</Text>
+                    <Text style={styles.allAssetLeft}>全部订单</Text>
+                    <TouchableOpacity
+                        activeOpacity={0.7}
+                        style={{height:30,alignItems:'center',justifyContent:'center',flexDirection:'row'}}
+                        onPress={() => this.props.dispatch(goto('MyOrder'))}>
+                        <Text style={styles.moreAssetRight}>查看全部订单</Text>
+                        <Image style={CommonStyles.rightArrowsStyle} source={ic_arrow_right}/>
                     </TouchableOpacity>
                 </View>
                 <View style={CommonStyles.vline}/>
@@ -147,7 +152,7 @@ const styles = StyleSheet.create({
     },
     moreAssetRight: {
         marginRight: 10,
-        color: '#65BCFE',
+        color: '#999999',
         fontSize: 13
     },
 })

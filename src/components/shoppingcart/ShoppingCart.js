@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {
     View,
-    FlatList, SectionList, Text,
+    FlatList, SectionList, Text,Dimensions
 } from 'react-native';
 import TitleBar from '../../widgets/TitleBar';
 import {connect} from 'react-redux';
@@ -202,6 +202,7 @@ class ShoppingCart extends BaseComponent {
 
         let listView = (this.props.shoppingCart.length === 0) ? (<EmptyView emptyTip={'购物车空空，快去逛逛吧'}/>) :
             (<View style={{flex: 1}}>
+                    <View style={{backgroundColor: '#F5F5F5',height:10,width:Dimensions.get('window').width}}/>
                         <SectionList
                             stickySectionHeadersEnabled={true}
                             renderSectionHeader={(item) =><ShoppingCartMerchantHeader data={item.section.merchant}/>}
@@ -217,6 +218,7 @@ class ShoppingCart extends BaseComponent {
                         {/*<EmptyView isShowEmptyView={false}/>*/}
 
                     <BottomView
+                        merchantData={merchantList}
                         onClickDeleteBtn={()=>{
                             this._deleteShoppingCartProduct(merchantList);
                         }}
@@ -244,8 +246,10 @@ class ShoppingCart extends BaseComponent {
                     title={'购物车'}
                     hideLeft={true}
                     hideRight={this.props.shoppingCart.length === 0}
-                    customRightView={() => (<Text style={{color: 'white'}}>{this.state.isDeleteMode?'完成':'编辑'}</Text>)}
+                    customRightView={() => (<Text style={{color: '#666666'}}>{this.state.isDeleteMode?'完成':'编辑'}</Text>)}
                     onRightViewClick={()=>{this.setState({isDeleteMode:!this.state.isDeleteMode})}}
+                    customBarStyle={{backgroundColor:'#ffffff'}}
+                    customBarTextStyle={{color:'#222222'}}
                     />
                 {this.state.isLoading ? <LoadingView/> : showView}
                 <SettlementDialog

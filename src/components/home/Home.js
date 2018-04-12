@@ -12,6 +12,11 @@ import RecommendDialog from "./module/RecommendDialog";
 import {gotoAndClose} from "../../reducers/RouterReducer";
 import {ModuleStyle} from "./Config";
 import BasePage from "./BasePage";
+const imgUrlList=[
+    'http://p0xkrqo35.bkt.clouddn.com/1523449671072.png',
+    'http://p0xkrqo35.bkt.clouddn.com/1523451871064.png',
+    'http://p0xkrqo35.bkt.clouddn.com/1523451885679.png'
+];
 class Home extends BasePage {
     constructor(props) {
         super(props);
@@ -111,23 +116,33 @@ class Home extends BasePage {
         Promise.all([post('main/module/home/banner'),
             post('main/module/home'),
             post('main/module/street', {street: 'APP_HOME_BRAND'}),
-            post('main/module/street', {street: 'APP_HOME_LEGOU'}),
+            // post('main/module/street', {street: 'APP_HOME_LEGOU'}),
         ])
-            .then(([bannerData, moduleData,streetData,legouStreetData]) => {
-                if (isSuccess(bannerData) && isSuccess(moduleData) && isSuccess(streetData) && isSuccess(legouStreetData)) {
+            .then(([bannerData, moduleData,streetData/*,legouStreetData*/]) => {
+                if (isSuccess(bannerData) && isSuccess(moduleData) && isSuccess(streetData) /*&& isSuccess(legouStreetData)*/) {
                     rows.push({"data": bannerData.result, 'modelId': ModuleStyle.BANNER});
                     rows.push({"data": '', 'modelId': ModuleStyle.GUIDE});
 
-                    for (let item of streetData.result) {
-                        rows.push({"data": item, 'modelId': item.style});
-                    }
+                    let num = 0;
                     for (let item of moduleData.result) {
-                        rows.push({"data": item, 'modelId': item.style});
+                        if (item.style==='C'){
+                            rows.push({"data": {...item,imgUrl:imgUrlList[0]}, 'modelId': 'ONE'});
+                        }else if (item.style==='DEFAULT'){
+                            num=num+1;
+                            rows.push({"data": {...item,imgUrl:imgUrlList[num>1?2:1]}, 'modelId': 'TWO'});
+                        }else {
+                            rows.push({"data": item, 'modelId': item.style});
+                        }
+                    }
+                    for (let item of streetData.result) {
+                        if (item.style==='DEFAULT'){
+                            rows.push({"data": {...item,imgUrl:imgUrlList[num>1?2:1]}, 'modelId': 'GUESS'});
+                        }
                     }
 
-                    for (let item of legouStreetData.result) {
+                   /* for (let item of legouStreetData.result) {
                         rows.push({"data": item, 'modelId': item.style});
-                    }
+                    }*/
 
                     callback(rows, {isShowFirstLoadView: false, pageNumber:1});
                 } else {

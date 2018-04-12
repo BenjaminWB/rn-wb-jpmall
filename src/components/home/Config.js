@@ -9,6 +9,8 @@ import GuideStreet from "./home/GuideStreet";
 import Sale from "./home/Sale";
 import QuarterZone from "./home/QuarterZone";
 import SpecialZone from "./home/SpecialZone";
+import ItemCOne from "./home/ItemCOne";
+import GuessZone from "./home/GuessZone";
 
 
 export const ModuleStyle = {
@@ -33,7 +35,6 @@ export function getTargetModuleComponent({index,item}){
     }
     return content;
 }
-
 function getModuleComponent(modelId,source,flag) {
     switch (modelId){
         case ModuleStyle.BANNER://广告轮播图
@@ -46,12 +47,18 @@ function getModuleComponent(modelId,source,flag) {
             return <RushPurchase data={source} {...flag}/>;
         case ModuleStyle.IA:
             return <GuideStreet data={source.contents} {...flag}/>;
-        case ModuleStyle.B:
-            return <Sale data={source} {...flag}/>;
+        // case ModuleStyle.B:
+        //     return <Sale data={source} {...flag}/>;
+        case 'ONE':
+            return <ItemCOne data={source} {...flag}/>;
         case ModuleStyle.IB:
             return <Sale data={source} isIntegral={true} {...flag}/>;
         case ModuleStyle.C:
             return <QuarterZone data={source} {...flag}/>;
+        case 'TWO':
+            return <ItemCOne data={source} {...flag}/>;
+        case 'GUESS':
+            return <GuessZone data={source} {...flag}/>;
         case ModuleStyle.DEFAULT:
             return <SpecialZone data={source} {...flag}/>;
         default:return null;
