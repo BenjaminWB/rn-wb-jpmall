@@ -47,11 +47,11 @@ class ModuleView extends Component {
         let {dispatch,userInfo} = this.props;
         return [
             {img: ic_me_id, name: '我的信息认证',func:()=>{
-                if (isTrue(this.props.isRealNameAuth)) {
-                    dispatch(goto('RealAuthInfo'));
-                } else {
+                // if (isTrue(this.props.isRealNameAuth)) {
+                //     dispatch(goto('RealAuthInfo'));
+                // } else {
                     dispatch(goto('Certification'));
-                }
+                // }
             }},
             // {img: ic_personal_module_group, name: '我的推荐',func:()=>{dispatch(goto('MyRecommendation'))}},
             {img: ic_personal_module_redpacket, name: '我的红包',func:()=>{dispatch(goto('MyRedPacket'))}},
