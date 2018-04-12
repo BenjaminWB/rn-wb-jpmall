@@ -44,7 +44,7 @@ class OrderComponent extends Component {
                 <View style={styles.orderContainer}>
                     {this.orderItem("待付款", ic_order_wait_pay,userInfo.orderCreated)}
                     {this.orderItem("待发货", ic_order_wait_delivery, userInfo.orderApproved)}
-                    {this.orderItem("待收货", ic_order_wait_received, userInfo.orderSent)}
+                    {this.orderItem("配送中", ic_order_wait_received, userInfo.orderSent)}
                     {this.orderItem("待评价", ic_order_wait_comment, userInfo.orderAppraise)}
                     {this.orderItem("退款/售后", ic_order_customer_service, 0)}
                 </View>
@@ -60,7 +60,7 @@ class OrderComponent extends Component {
             this.props.dispatch(goto('MyOrder', {orderType: ORDER_CREATED}));
         } else if (orderStatusName === '待发货') {
             this.props.dispatch(goto('MyOrder', {orderType: ORDER_APPROVED}));
-        } else if (orderStatusName === '待收货') {
+        } else if (orderStatusName === '配送中') {
             this.props.dispatch(goto('MyOrder', {orderType: ORDER_SENT}));
         } else if (orderStatusName === '待评价') {
             this.props.dispatch(goto('MyOrder', {orderType: ORDER_APPRAISE}));
