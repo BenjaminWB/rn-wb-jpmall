@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {
+    Text,
     View,
 } from 'react-native';
 import {showToastShort} from "../../common/CommonToast";
@@ -31,6 +32,7 @@ export default class BasePage extends BaseComponent {
                 isShowFirstLoadView={true}
                 enableEmptySections={true}
                 // noMoreFooterView={()=><ServiceMessageView/>}
+                noMoreFooterView={()=><View style={{alignItems:'center',padding:10}}><Text style={{color:'#999',fontSize:13}}>已经到底啦</Text></View>}
                 refreshableTintColor="blue"/>
         );
 
