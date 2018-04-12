@@ -26,7 +26,7 @@ class MyAssetView extends Component {
         const {dispatch} = this.props;
         if (scoreName === '消费券') {
             dispatch(goto('Integral',{assetType:CONSUMER_COUPON_ACCOUNT}))
-        } else if (scoreName === '消费余额') {
+        } else if (scoreName === '余额') {
             dispatch(goto('Balance',BALANCE_ACCOUNT))
         } else if (scoreName === '创业券'){
             dispatch(goto('Integral',{assetType:ENTREPRENEURSHIP_COUPON_ACCOUNT}))
