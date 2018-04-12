@@ -190,7 +190,7 @@ class ProductList extends Component {
                     <TouchableOpacity activeOpacity={0.7} style={styles.salesVolumeStyle}
                                       onPress={()=>{this.sortBySales()}}>
                         <Text
-                            style={[styles.textStyle, {color: this.state.isSortBySales? mainColor : contentTextColor}]}>{'销量'}</Text>
+                            style={[styles.textStyle, {color: this.state.isSortBySales? mainColor : contentTextColor}]}>{'人气'}</Text>
                         <Image source={this.isSortBySalesAsc ? ic_upper_arrow : ic_down_arrow}
                                style={styles.arrowStyle}/>
                     </TouchableOpacity>

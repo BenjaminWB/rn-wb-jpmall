@@ -57,7 +57,7 @@ class BottomView extends Component {
                             });
                         }}>
                         <CheckBox isCheck={allCheck}/>
-
+                        <Text style={{color: '#999', fontSize: 13,marginRight:20}}>全选</Text>
                     </TouchableOpacity>
                     <View style={{flex:1}}/>
                     <Text style={{color: titleTextColor, fontSize: 17,marginRight:20}}>总计:

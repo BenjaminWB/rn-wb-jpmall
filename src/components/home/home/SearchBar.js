@@ -74,12 +74,11 @@ class SearchBar extends Component {
                             <TouchableOpacity
                                 activeOpacity={0.7}
                                 onPress={() => this.props.dispatch(goBack())}>
-                                <View  style={{width: 18, height: 18, margin: 10}}/>
+                                <XImage source={whiteBackIco} style={{width: 18, height: 18, margin: 10}}/>
                             </TouchableOpacity> :
                             <TouchableOpacity
-                                activeOpacity={0.7}
-                                onPress={() => NativeModules.InteractionModule.openScanQRCode()}>
-                                <XImage style={{width: 23, height: 23, margin: 10}} source={ic_scan}/>
+                                activeOpacity={0.7}>
+                                <View style={{width: 23, height: 23, margin: 10}} />
                             </TouchableOpacity>
                     }
                     {
@@ -99,18 +98,11 @@ class SearchBar extends Component {
                         this.props.onlyTitle ? <View style={{width: 32, height: 32, margin: 10}}/> :
                             <TouchableOpacity
                                 style={{width: 48, height: 48}}
-                                activeOpacity={0.7}
-                                onPress={() => {
-                                    if (this.props.token) {
-                                        this.props.dispatch(goto('MessageCenter'))
-                                    } else {
-                                        this.props.dispatch(goto('Login'));
-                                    }
-                                }}>
-                                <XImage style={{width: 28, height: 28, margin: 10,}} source={ic_message_new}/>
-                                <View style={[styles.countView, {display: this.props.msgCount > 0 ? 'flex' : 'none'}]}>
-                                    <Text style={styles.count}>{this.props.msgCount}</Text>
-                                </View>
+                                activeOpacity={1}>
+                                <View style={{width: 28, height: 28, margin: 10,}} />
+                                {/*<View style={[styles.countView, {display: this.props.msgCount > 0 ? 'flex' : 'none'}]}>*/}
+                                    {/*<Text style={styles.count}>{this.props.msgCount}</Text>*/}
+                                {/*</View>*/}
                             </TouchableOpacity>
                     }
 
